@@ -30,11 +30,11 @@
     #particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.45}
 
     /* NAVBAR */
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;transition:background .4s,border-color .4s;background:rgba(6,13,26,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;transition:background .4s,border-color .4s}
     .navbar.scrolled{background:rgba(6,13,26,0.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
     .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2rem}
     .logo{display:flex;align-items:center;gap:0.6rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--white)}
-    .logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--teal2),var(--teal));display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:white;box-shadow:0 0 16px rgba(0,180,216,0.4)}
+    .logo-img{height:38px;width:auto;border-radius:0;object-fit:contain;pointer-events:auto;-webkit-user-drag:none}
     .nav-links{display:flex;gap:2.2rem;margin-left:auto}
     .nav-links a{font-size:0.82rem;font-weight:500;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;transition:color .2s;position:relative}
     .nav-links a:hover,.nav-links a.active{color:var(--teal)}
@@ -49,14 +49,14 @@
     .mobile-nav .close-btn{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:var(--muted);background:none;border:none;cursor:pointer}
 
     /* CAROUSEL */
-    .carousel{position:relative;width:100%;height:100vh;overflow:hidden;z-index:1;margin-top:0}
+    .carousel{position:relative;width:100%;height:100vh;overflow:hidden;z-index:1}
     .carousel-track{display:flex;height:100%;transition:transform 1s cubic-bezier(0.77,0,0.18,1)}
     .carousel-slide{flex:0 0 100%;height:100%;position:relative}
-    .carousel-slide img{width:100%;height:100%;object-fit:cover;object-position:center center;-webkit-user-drag:none;pointer-events:none;transform:scale(1.08);transition:transform 8s ease}
+    .carousel-slide img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;pointer-events:none;transform:scale(1.08);transition:transform 8s ease}
     .carousel-slide.active img{transform:scale(1)}
     .carousel-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,13,26,0.3) 0%,rgba(6,13,26,0.1) 30%,rgba(6,13,26,0.55) 65%,rgba(6,13,26,0.92) 100%)}
     .carousel-slide::before{content:'© MofonDrugs';position:absolute;bottom:18px;right:20px;z-index:3;font-size:0.68rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;pointer-events:none}
-    .slide-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem 4rem;max-width:820px}
+    .slide-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem;max-width:820px}
     .slide-tag{display:inline-block;background:rgba(0,180,216,0.12);border:1px solid var(--border);color:var(--teal);font-size:0.72rem;font-weight:700;padding:0.35rem 1rem;border-radius:50px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;opacity:0;transform:translateY(20px);transition:opacity .6s .2s ease,transform .6s .2s ease}
     .slide-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5.5vw,4.5rem);color:var(--white);line-height:1.1;margin-bottom:1rem;opacity:0;transform:translateY(24px);transition:opacity .7s .35s ease,transform .7s .35s ease}
     .slide-title em{color:var(--teal);font-style:italic}
@@ -226,20 +226,6 @@
     .reveal.visible{opacity:1;transform:translateY(0)}
     .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
 
-
-    /* ── EYE BLINK INTRO ── */
-    #intro-overlay{position:fixed;inset:0;z-index:9999;background:#060d1a;display:flex;align-items:center;justify-content:center;flex-direction:column;pointer-events:none}
-    #intro-overlay.done{opacity:0;transition:opacity .5s .2s ease;pointer-events:none}
-    .blink-eye{position:relative;width:180px;height:90px;display:flex;align-items:center;justify-content:center}
-    .blink-lid-top,.blink-lid-bot{position:absolute;left:0;right:0;background:#060d1a;z-index:2;transition:height .25s ease}
-    .blink-lid-top{top:0;height:50%;border-radius:90px 90px 0 0}
-    .blink-lid-bot{bottom:0;height:50%;border-radius:0 0 90px 90px}
-    .blink-iris{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 38% 38%,#1a7fa8,#03045E 70%);box-shadow:0 0 24px rgba(0,180,216,0.5);position:relative;z-index:1}
-    .blink-shine{position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.3);top:10px;left:14px}
-    .intro-logo{margin-top:2rem;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-    .intro-logo img{height:56px;width:auto;filter:drop-shadow(0 0 12px rgba(0,180,216,0.5))}
-    .intro-logo.show{opacity:1;transform:translateY(0)}
-
     /* KEYFRAMES */
     @keyframes scrollBrands{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     @keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.5)}50%{box-shadow:0 4px 40px rgba(37,211,102,0.8),0 0 0 12px rgba(37,211,102,0.1)}}
@@ -266,24 +252,14 @@
       .why-visual{grid-template-columns:1fr}
       .footer-inner{grid-template-columns:1fr}
       .trust-item{border-right:none;padding:0.5rem 1rem}
-      .footer-bottom{flex-direction:column;text-align:center}.logo-img{height:44px}
-      .slide-content{padding:5rem 1.5rem 3rem}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .slide-content{padding:3rem 1.5rem}
       .carousel-prev{left:0.75rem}.carousel-next{right:0.75rem}
     }
   </style>
 </head>
 <body>
 
-<div id="intro-overlay">
-  <div class="blink-eye">
-    <div class="blink-lid-top" id="lidTop"></div>
-    <div class="blink-iris"><div class="blink-shine"></div></div>
-    <div class="blink-lid-bot" id="lidBot"></div>
-  </div>
-  <div class="intro-logo" id="introLogo">
-    <img src="assets/images/logo.png" alt="MofonDrugs" draggable="false" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:white;letter-spacing:0.05em">MofonDrugs</span>
-  </div>
-</div>
 <canvas id="particles"></canvas>
 
 <div class="mobile-nav" id="mobileNav">
@@ -298,7 +274,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a class="logo" href="#home">
-      <span class="logo-mark">M</span>MofonDrugs
+      <img src="assets/images/logo.png" alt="MofonDrugs" class="logo-img">
     </a>
     <ul class="nav-links">
       <li><a href="#home" class="active">Home</a></li>
@@ -315,10 +291,10 @@
 </nav>
 
 <!-- HERO CAROUSEL -->
-<section class="carousel" id="home" style="padding-top:0">
+<section class="carousel" id="home">
   <div class="carousel-track" id="carouselTrack">
     <div class="carousel-slide active">
-      <img src="assets/images/slide1.jpg" alt="Human eye macro" draggable="false"/>
+      <img src="assets/images/slide1.webp" alt="Human eye macro" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">Trusted Since 2010 &middot; Hyderabad</span>
         <h1 class="slide-title">Precision Eye Care,<br/><em>Delivered to Your Clinic</em></h1>
@@ -330,7 +306,7 @@
       </div>
     </div>
     <div class="carousel-slide">
-      <img src="assets/images/slide2.jpg" alt="Ophthalmologist eye examination" draggable="false"/>
+      <img src="assets/images/slide2.webp" alt="Ophthalmologist eye examination" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">For Healthcare Professionals</span>
         <h1 class="slide-title">Supplying <em>Clinics</em><br/>That Demand Quality</h1>
@@ -342,7 +318,7 @@
       </div>
     </div>
     <div class="carousel-slide">
-      <img src="assets/images/slide3.jpg" alt="Eye drops being applied" draggable="false"/>
+      <img src="assets/images/slide3.webp" alt="Eye drops being applied" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">Product Category</span>
         <h1 class="slide-title">Sterile <em>Eye Drops</em><br/>for Every Protocol</h1>
@@ -598,7 +574,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a class="logo" href="#home"><span class="logo-mark">M</span> MofonDrugs</a>
+      <a class="logo" href="#home"><img src="assets/images/logo.png" alt="MofonDrugs" class="logo-img"></a>
       <p>Trusted ophthalmic pharmaceutical supplier for eye care professionals. Quality, authenticity, and reliability since 2010. Hyderabad, India.</p>
     </div>
     <div class="footer-links">
@@ -731,59 +707,6 @@
   }
   const co=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){animCounter(e.target);co.unobserve(e.target)}}),{threshold:.5});
   document.querySelectorAll('.counter').forEach(el=>co.observe(el));
-
-  /* NAV PILL CLICK RIPPLE */
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.addEventListener('click',function(){
-      this.classList.remove('nav-ripple');
-      void this.offsetWidth; // reflow
-      this.classList.add('nav-ripple');
-      this.addEventListener('animationend',()=>this.classList.remove('nav-ripple'),{once:true});
-    });
-  });
-
-  /* EYE BLINK INTRO */
-  (function(){
-    const overlay = document.getElementById('intro-overlay');
-    const lidTop  = document.getElementById('lidTop');
-    const lidBot  = document.getElementById('lidBot');
-    const logo    = document.getElementById('introLogo');
-    if(!overlay) return;
-
-    // Start: lids closed (eye shut)
-    lidTop.style.height = '50%';
-    lidBot.style.height = '50%';
-
-    // Step 1: hold closed briefly
-    setTimeout(()=>{
-      // Step 2: open eye
-      lidTop.style.transition = 'height .35s ease';
-      lidBot.style.transition = 'height .35s ease';
-      lidTop.style.height = '0%';
-      lidBot.style.height = '0%';
-    }, 300);
-
-    // Step 3: logo rises
-    setTimeout(()=>{ logo.classList.add('show'); }, 750);
-
-    // Step 4: blink once more
-    setTimeout(()=>{
-      lidTop.style.transition = 'height .15s ease';
-      lidBot.style.transition = 'height .15s ease';
-      lidTop.style.height = '50%';
-      lidBot.style.height = '50%';
-    }, 1400);
-    setTimeout(()=>{
-      lidTop.style.height = '0%';
-      lidBot.style.height = '0%';
-    }, 1600);
-
-    // Step 5: fade out overlay, reveal site
-    setTimeout(()=>{
-      overlay.classList.add('done');
-      setTimeout(()=>{ overlay.style.display='none'; }, 700);
-    }, 2100);
-  })();
 </script>
 </body>
 </html>
