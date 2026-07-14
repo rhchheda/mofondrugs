@@ -36,7 +36,7 @@
     .logo{display:flex;align-items:center;gap:0.6rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--white)}
     .logo-img{height:38px;width:auto;border-radius:0;object-fit:contain;pointer-events:auto;-webkit-user-drag:none}
     .nav-links{display:flex;gap:2.2rem;margin-left:auto}
-    .nav-links a{font-size:0.82rem;font-weight:500;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;transition:color .2s;position:relative}
+    .nav-links a{font-size:0.82rem;font-weight:600;color:var(--off);letter-spacing:0.06em;text-transform:uppercase;transition:color .2s;position:relative;text-shadow:0 1px 4px rgba(0,0,0,0.5)}
     .nav-links a:hover,.nav-links a.active{color:var(--teal)}
     .nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--teal)}
     .btn-wa-nav{display:flex;align-items:center;gap:0.5rem;background:var(--wa);color:white;padding:0.5rem 1.1rem;border-radius:50px;font-size:0.8rem;font-weight:600;transition:transform .2s,box-shadow .2s;white-space:nowrap}
@@ -50,6 +50,9 @@
 
     /* CAROUSEL */
     .carousel{position:relative;width:100%;height:100vh;overflow:hidden;z-index:1}
+    .trust-seal{position:absolute;top:6.5rem;right:2rem;z-index:5;display:flex;align-items:center;gap:0.5rem;background:rgba(6,13,26,0.55);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:0.75rem;font-weight:700;padding:0.55rem 1.2rem;border-radius:50px;letter-spacing:0.06em;backdrop-filter:blur(8px)}
+    .trust-seal svg{flex-shrink:0}
+    @media(max-width:700px){.trust-seal{display:none}}
     .carousel-track{display:flex;height:100%;transition:transform 1s cubic-bezier(0.77,0,0.18,1)}
     .carousel-slide{flex:0 0 100%;height:100%;position:relative}
     .carousel-slide img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;pointer-events:none;transform:scale(1.08);transition:transform 8s ease}
@@ -102,37 +105,28 @@
 
     /* PRODUCTS */
     .products-section{padding:6rem 2rem;background:var(--bg)}
-    .products-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .filter-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:0.7rem;margin-bottom:2.5rem}
+    .filter-tab{background:var(--surface);border:1px solid var(--border2);color:var(--muted);font-size:0.82rem;font-weight:600;padding:0.55rem 1.4rem;border-radius:50px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+    .filter-tab:hover{color:var(--off);border-color:var(--border)}
+    .filter-tab.active{background:rgba(0,180,216,0.12);border-color:var(--teal);color:var(--teal)}
+    .products-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+    .products-empty{text-align:center;color:var(--muted);font-size:0.9rem;padding:2rem;grid-column:1/-1}
     .product-card{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;position:relative;transition:border-color .3s,transform .3s,box-shadow .3s}
     .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity .3s;z-index:1}
     .product-card:hover{border-color:var(--border);transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,0.5),var(--glow)}
     .product-card:hover::before{opacity:1}
-    .product-card.featured{border-color:rgba(0,180,216,0.3);background:var(--bg3)}
     .product-img-wrap{position:relative;width:100%;height:200px;overflow:hidden;background:var(--surface)}
     .product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;pointer-events:none;-webkit-user-drag:none}
     .product-card:hover .product-img-wrap img{transform:scale(1.06)}
     .product-img-wrap::after{content:'© MofonDrugs';position:absolute;bottom:8px;right:10px;font-size:0.62rem;color:rgba(255,255,255,0.28);letter-spacing:0.08em;pointer-events:none;z-index:2}
     .product-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(6,13,26,0.7) 100%);z-index:1}
-    .featured-badge{position:absolute;top:1rem;right:1rem;z-index:3;background:rgba(0,180,216,0.2);border:1px solid var(--border);color:var(--teal);font-size:0.65rem;font-weight:700;padding:0.2rem 0.7rem;border-radius:50px;letter-spacing:0.08em;text-transform:uppercase}
     .product-body{padding:1.75rem;display:flex;flex-direction:column;gap:0.9rem;flex:1}
-    .product-icon-row{display:flex;align-items:center;gap:0.75rem}
-    .product-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(0,180,216,0.1);border:1px solid var(--border)}
-    .product-card h3{font-size:1.45rem;color:var(--white)}
+    .product-card h3{font-size:1.3rem;color:var(--white)}
     .product-body>p{font-size:0.88rem;color:var(--muted);line-height:1.75}
     .product-tags{display:flex;flex-wrap:wrap;gap:0.45rem}
     .tag{background:rgba(0,180,216,0.07);border:1px solid var(--border);color:var(--aqua);font-size:0.7rem;font-weight:500;padding:0.18rem 0.65rem;border-radius:50px}
     .card-cta{display:inline-flex;align-items:center;gap:0.4rem;margin-top:auto;color:var(--teal);font-size:0.85rem;font-weight:600;transition:gap .2s,color .2s}
     .card-cta:hover{gap:0.75rem;color:var(--aqua)}
-
-    /* BRANDS */
-    .brands-section{padding:4rem 2rem;background:var(--bg2);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);overflow:hidden}
-    .brands-header{text-align:center;margin-bottom:2.5rem}
-    .brands-header p{font-size:0.8rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
-    .brands-track-wrap{overflow:hidden}
-    .brands-track{display:flex;gap:3rem;align-items:center;animation:scrollBrands 24s linear infinite;width:max-content}
-    .brands-track:hover{animation-play-state:paused}
-    .brand-item{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:0.9rem 2rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--muted);white-space:nowrap;transition:color .3s,border-color .3s}
-    .brand-item:hover{color:var(--teal);border-color:var(--border)}
 
     /* WHY */
     .why-section{padding:6rem 2rem;background:var(--bg)}
@@ -151,23 +145,10 @@
     .wv-card h4{font-size:0.9rem;color:var(--white);margin-bottom:0.3rem;font-weight:600}
     .wv-card p{font-size:0.78rem;color:var(--muted);line-height:1.6}
 
-    /* TESTIMONIALS */
-    .testimonials-section{padding:6rem 2rem;background:var(--bg2)}
-    .testimonials-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-    .testi-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:2rem;display:flex;flex-direction:column;gap:1.2rem;transition:border-color .3s,transform .3s}
-    .testi-card:hover{border-color:var(--border);transform:translateY(-4px)}
-    .testi-quote{font-size:2.5rem;color:var(--teal);line-height:1;font-family:'Cormorant Garamond',serif}
-    .testi-text{font-size:0.9rem;color:var(--off);line-height:1.8;font-style:italic;flex:1}
-    .testi-author{display:flex;align-items:center;gap:0.8rem;padding-top:1rem;border-top:1px solid var(--border2)}
-    .testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal2),#03045E);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:white;flex-shrink:0}
-    .testi-name{font-size:0.85rem;font-weight:600;color:var(--white)}
-    .testi-role{font-size:0.75rem;color:var(--muted)}
-    .testi-stars{color:var(--gold);font-size:0.75rem;letter-spacing:2px}
-
     /* CATALOGUE */
     .catalogue-section{padding:5rem 2rem;background:var(--bg)}
-    .catalogue-inner{max-width:900px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:24px;padding:4rem;display:flex;align-items:center;gap:4rem;position:relative;overflow:hidden}
-    .catalogue-inner::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,180,216,0.08),transparent);pointer-events:none}
+    .catalogue-inner{max-width:900px;margin:0 auto;background:var(--bg3);border:1px solid rgba(201,168,76,0.3);border-radius:24px;padding:4rem;display:flex;align-items:center;gap:4rem;position:relative;overflow:hidden}
+    .catalogue-inner::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.10),transparent);pointer-events:none}
     .cat-text{flex:1}
     .cat-text h2{font-size:2.2rem;color:var(--white);margin-bottom:0.75rem}
     .cat-text p{color:var(--muted);font-size:0.92rem;line-height:1.75;margin-bottom:1.5rem}
@@ -227,14 +208,12 @@
     .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
 
     /* KEYFRAMES */
-    @keyframes scrollBrands{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     @keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.5)}50%{box-shadow:0 4px 40px rgba(37,211,102,0.8),0 0 0 12px rgba(37,211,102,0.1)}}
 
     /* RESPONSIVE */
     @media(max-width:1000px){
       .why-inner{grid-template-columns:1fr;gap:3rem}
       .why-visual{grid-template-columns:1fr 1fr}
-      .testimonials-grid{grid-template-columns:1fr 1fr}
       .contact-inner{grid-template-columns:1fr;gap:2.5rem}
       .footer-inner{grid-template-columns:1fr 1fr;gap:2rem}
       .catalogue-inner{flex-direction:column;gap:2rem;text-align:center;padding:2.5rem}
@@ -248,7 +227,6 @@
       .stat-card:first-child{border-radius:var(--r) 0 0 0}
       .stat-card:last-child{border-radius:0 0 var(--r) 0}
       .products-grid{grid-template-columns:1fr}
-      .testimonials-grid{grid-template-columns:1fr}
       .why-visual{grid-template-columns:1fr}
       .footer-inner{grid-template-columns:1fr}
       .trust-item{border-right:none;padding:0.5rem 1rem}
@@ -274,7 +252,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a class="logo" href="#home">
-      <img src="assets/images/logo.png" alt="MofonDrugs" class="logo-img">
+      <img src="images/logo-dark-bg.png" alt="MofonDrugs" class="logo-img">
     </a>
     <ul class="nav-links">
       <li><a href="#home" class="active">Home</a></li>
@@ -292,9 +270,13 @@
 
 <!-- HERO CAROUSEL -->
 <section class="carousel" id="home">
+  <div class="trust-seal">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.6L21 9.3l-5.2 4.6L17.3 21 12 17.3 6.7 21l1.5-7.1L3 9.3l6.6-.7L12 2z"/></svg>
+    Most Trusted &middot; Manufacturer Direct
+  </div>
   <div class="carousel-track" id="carouselTrack">
     <div class="carousel-slide active">
-      <img src="assets/images/slide1.webp" alt="Human eye macro" draggable="false"/>
+      <img src="images/slide1.webp" alt="Human eye macro" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">Trusted Since 2010 &middot; Hyderabad</span>
         <h1 class="slide-title">Precision Eye Care,<br/><em>Delivered to Your Clinic</em></h1>
@@ -306,7 +288,7 @@
       </div>
     </div>
     <div class="carousel-slide">
-      <img src="assets/images/slide2.webp" alt="Ophthalmologist eye examination" draggable="false"/>
+      <img src="images/slide2.webp" alt="Ophthalmologist eye examination" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">For Healthcare Professionals</span>
         <h1 class="slide-title">Supplying <em>Clinics</em><br/>That Demand Quality</h1>
@@ -318,7 +300,7 @@
       </div>
     </div>
     <div class="carousel-slide">
-      <img src="assets/images/slide3.webp" alt="Eye drops being applied" draggable="false"/>
+      <img src="images/slide3.webp" alt="Eye drops being applied" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">Product Category</span>
         <h1 class="slide-title">Sterile <em>Eye Drops</em><br/>for Every Protocol</h1>
@@ -330,7 +312,7 @@
       </div>
     </div>
     <div class="carousel-slide">
-      <img src="assets/images/slide4.jpg" alt="Eye gel and ointment" draggable="false"/>
+      <img src="images/08_LACRIFON_EYE-GEL_1.jpg" alt="Eye gel and ointment" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">Product Category</span>
         <h1 class="slide-title">Eye Gels &amp;<br/><em>Therapeutic Ointments</em></h1>
@@ -342,7 +324,7 @@
       </div>
     </div>
     <div class="carousel-slide">
-      <img src="assets/images/slide5.jpg" alt="Eye vitamins and supplements" draggable="false"/>
+      <img src="images/slide5.webp" alt="Eye vitamins and supplements" draggable="false"/>
       <div class="slide-content">
         <span class="slide-tag">Product Category</span>
         <h1 class="slide-title">Ocular Vitamins &amp;<br/><em>Macular Supplements</em></h1>
@@ -366,7 +348,7 @@
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Quality Assured
   </div>
   <div class="trust-item">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Licensed Manufacturers Only
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Manufacturer Direct
   </div>
   <div class="trust-item">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Clinic-First Supply
@@ -381,7 +363,7 @@
   <div class="stats-inner">
     <div class="stat-card reveal"><div class="stat-num"><span class="counter" data-target="15">0</span><span>+</span></div><div class="stat-lbl">Years in Operation</div></div>
     <div class="stat-card reveal reveal-delay-1"><div class="stat-num"><span class="counter" data-target="100">0</span><span>%</span></div><div class="stat-lbl">Genuine Products</div></div>
-    <div class="stat-card reveal reveal-delay-2"><div class="stat-num"><span class="counter" data-target="4">0</span></div><div class="stat-lbl">Product Categories</div></div>
+    <div class="stat-card reveal reveal-delay-2"><div class="stat-num"><span class="counter" data-target="19">0</span><span>+</span></div><div class="stat-lbl">Products Available</div></div>
     <div class="stat-card reveal reveal-delay-3"><div class="stat-num"><span class="counter" data-target="500">0</span><span>+</span></div><div class="stat-lbl">Orders Fulfilled</div></div>
   </div>
 </section>
@@ -391,79 +373,17 @@
   <div style="max-width:1200px;margin:0 auto">
     <div class="section-header reveal">
       <span class="section-tag">Our Range</span>
-      <h2>Product Categories</h2>
-      <p>All products sourced directly from certified manufacturers — available exclusively to healthcare professionals and eye care clinics.</p>
+      <h2>Our Product Catalogue</h2>
+      <p>19 formulations sourced directly from certified manufacturers — available exclusively to healthcare professionals and eye care clinics.</p>
     </div>
-    <div class="products-grid">
-      <div class="product-card featured reveal">
-        <div class="product-img-wrap">
-          <img src="assets/images/1.jpg" alt="Eye Drops" draggable="false"/>
-          <div class="product-img-overlay"></div>
-          <div class="featured-badge">Most Enquired</div>
-        </div>
-        <div class="product-body">
-          <div class="product-icon-row"><div class="product-icon">&#128167;</div><h3>Eye Drops</h3></div>
-          <p>Sterile ophthalmic solutions for dry eye, allergic conjunctivitis, post-operative care, and infection management. Single-dose and multi-dose formats available.</p>
-          <div class="product-tags"><span class="tag">Lubricating</span><span class="tag">Anti-infective</span><span class="tag">Anti-allergy</span><span class="tag">Post-surgical</span></div>
-          <a href="https://wa.me/919343087666?text=I%20would%20like%20to%20enquire%20about%20Eye%20Drops." target="_blank" class="card-cta">Enquire on WhatsApp &#8594;</a>
-        </div>
-      </div>
-      <div class="product-card reveal reveal-delay-1">
-        <div class="product-img-wrap">
-          <img src="assets/images/2.jpg" alt="Eye Gel and Ointment" draggable="false"/>
-          <div class="product-img-overlay"></div>
-        </div>
-        <div class="product-body">
-          <div class="product-icon-row"><div class="product-icon">&#129316;</div><h3>Eye Gel &amp; Ointment</h3></div>
-          <p>Viscous ophthalmic formulations for overnight therapy, severe dry eye, and prolonged lubrication. Ideal for extended-contact treatment protocols.</p>
-          <div class="product-tags"><span class="tag">Carbomer Gels</span><span class="tag">Antibiotic</span><span class="tag">Night Relief</span><span class="tag">Combination</span></div>
-          <a href="https://wa.me/919343087666?text=I%20would%20like%20to%20enquire%20about%20Eye%20Gel." target="_blank" class="card-cta">Enquire on WhatsApp &#8594;</a>
-        </div>
-      </div>
-      <div class="product-card reveal reveal-delay-2">
-        <div class="product-img-wrap">
-          <img src="assets/images/3.jpg" alt="Eye Vitamins and Supplements" draggable="false"/>
-          <div class="product-img-overlay"></div>
-        </div>
-        <div class="product-body">
-          <div class="product-icon-row"><div class="product-icon">&#10024;</div><h3>Eye Vitamins &amp; Supplements</h3></div>
-          <p>Nutritional formulations supporting macular health, oxidative stress reduction, and long-term ocular wellness for patient care plans.</p>
-          <div class="product-tags"><span class="tag">Lutein &amp; Zeaxanthin</span><span class="tag">Omega-3</span><span class="tag">Vitamin A</span><span class="tag">Macular Support</span></div>
-          <a href="https://wa.me/919343087666?text=I%20would%20like%20to%20enquire%20about%20Eye%20Vitamins." target="_blank" class="card-cta">Enquire on WhatsApp &#8594;</a>
-        </div>
-      </div>
-      <div class="product-card reveal reveal-delay-3">
-        <div class="product-img-wrap">
-          <img src="assets/images/4.jpg" alt="Other Pharma and OTC" draggable="false"/>
-          <div class="product-img-overlay"></div>
-        </div>
-        <div class="product-body">
-          <div class="product-icon-row"><div class="product-icon">&#128230;</div><h3>Other Pharma &amp; OTC</h3></div>
-          <p>A curated range of over-the-counter ophthalmic and general pharmaceutical products suitable for clinic dispensaries and patient recommendation programs.</p>
-          <div class="product-tags"><span class="tag">Eyelid Hygiene</span><span class="tag">Ocular Cleansers</span><span class="tag">Adjunct Therapy</span><span class="tag">OTC</span></div>
-          <a href="https://wa.me/919343087666?text=I%20would%20like%20to%20enquire%20about%20OTC%20products." target="_blank" class="card-cta">Enquire on WhatsApp &#8594;</a>
-        </div>
-      </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-filter="All">All Products</button>
+      <button class="filter-tab" data-filter="Eye Drops">Eye Drops</button>
+      <button class="filter-tab" data-filter="Eye Gel">Eye Gel</button>
+      <button class="filter-tab" data-filter="Vitamins &amp; Supplements">Vitamins &amp; Supplements</button>
     </div>
-  </div>
-</section>
-
-<!-- BRANDS -->
-<section class="brands-section">
-  <div class="brands-header reveal">
-    <span class="section-tag">Trusted Manufacturers</span>
-    <p>We partner with certified, licensed pharmaceutical manufacturers</p>
-  </div>
-  <div class="brands-track-wrap">
-    <div class="brands-track">
-      <div class="brand-item">Sun Pharma</div><div class="brand-item">Cipla</div>
-      <div class="brand-item">Allergan</div><div class="brand-item">Alcon</div>
-      <div class="brand-item">Santen</div><div class="brand-item">Ajanta Pharma</div>
-      <div class="brand-item">Entod Pharma</div><div class="brand-item">FDC Limited</div>
-      <div class="brand-item">Sun Pharma</div><div class="brand-item">Cipla</div>
-      <div class="brand-item">Allergan</div><div class="brand-item">Alcon</div>
-      <div class="brand-item">Santen</div><div class="brand-item">Ajanta Pharma</div>
-      <div class="brand-item">Entod Pharma</div><div class="brand-item">FDC Limited</div>
+    <div class="products-grid" id="productsGrid">
+      <p class="products-empty">Loading product catalogue&hellip;</p>
     </div>
   </div>
 </section>
@@ -476,7 +396,7 @@
       <h2>A Supply Partner Built for Eye Care Professionals</h2>
       <p>Clinicians need consistent stock, authentic formulations, and a supplier who responds without delay. That's what we've delivered since 2010.</p>
       <div class="why-list">
-        <div class="why-item"><div class="why-icon">&#128737;&#65039;</div><div><strong>Genuine Products Only</strong><p>Sourced directly from licensed manufacturers — no grey-market goods, no substitutions, ever.</p></div></div>
+        <div class="why-item"><div class="why-icon">&#128737;&#65039;</div><div><strong>Genuine Products Only</strong><p>Manufactured to strict quality standards under our own brand — no grey-market goods, no substitutions, ever.</p></div></div>
         <div class="why-item"><div class="why-icon">&#129309;</div><div><strong>Clinic-First Approach</strong><p>We supply exclusively to healthcare professionals, ensuring responsible and integrity-driven distribution.</p></div></div>
         <div class="why-item"><div class="why-icon">&#9889;</div><div><strong>Direct, Responsive Support</strong><p>Reach us on WhatsApp or phone — real people, real answers, within hours.</p></div></div>
         <div class="why-item"><div class="why-icon">&#128230;</div><div><strong>Reliable Fulfilment</strong><p>Consistent stock, prompt delivery, and transparent communication on every order.</p></div></div>
@@ -488,34 +408,6 @@
       <div class="wv-card"><div class="wv-icon">&#9989;</div><h4>100% Authentic</h4><p>Every product verified before reaching your clinic. No exceptions.</p></div>
       <div class="wv-card"><div class="wv-icon">&#128300;</div><h4>Clinically Curated Range</h4><p>Products selected based on clinical relevance, efficacy, and professional demand.</p></div>
       <div class="wv-card"><div class="wv-icon">&#128222;</div><h4>Always Reachable</h4><p>Mon&#8211;Fri, 9am&#8211;6pm IST. WhatsApp and phone. No bots, no queues.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div style="max-width:1100px;margin:0 auto">
-    <div class="section-header reveal">
-      <span class="section-tag">What Doctors Say</span>
-      <h2>Trusted by Eye Care Professionals</h2>
-      <p>Hear from the clinicians who rely on MofonDrugs for their daily supply needs.</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testi-card reveal">
-        <div class="testi-quote">&#8220;</div>
-        <p class="testi-text">MofonDrugs has been our go-to supplier for over five years. Products are always genuine and delivery is never a concern. Exactly what a busy clinic needs.</p>
-        <div class="testi-author"><div class="testi-avatar">DR</div><div><div class="testi-name">Dr. Raghavendra M.</div><div class="testi-role">Ophthalmologist, Hyderabad</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div>
-      </div>
-      <div class="testi-card reveal reveal-delay-1">
-        <div class="testi-quote">&#8220;</div>
-        <p class="testi-text">What I appreciate most is the responsiveness. One WhatsApp message and I get stock availability within the hour. That's rare in this space.</p>
-        <div class="testi-author"><div class="testi-avatar">SP</div><div><div class="testi-name">Dr. Sunita Prasad</div><div class="testi-role">Optometrist, ECIL Clinic</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div>
-      </div>
-      <div class="testi-card reveal reveal-delay-2">
-        <div class="testi-quote">&#8220;</div>
-        <p class="testi-text">Consistent quality, no surprises. We've never had an authenticity issue with MofonDrugs. For a clinic prescribing these daily, that trust is invaluable.</p>
-        <div class="testi-author"><div class="testi-avatar">AK</div><div><div class="testi-name">Dr. Anil Kumar</div><div class="testi-role">Senior Consultant, Eye Care Centre</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div></div>
-      </div>
     </div>
   </div>
 </section>
@@ -574,7 +466,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <a class="logo" href="#home"><img src="assets/images/logo.png" alt="MofonDrugs" class="logo-img"></a>
+      <a class="logo" href="#home"><img src="images/logo-dark-bg.png" alt="MofonDrugs" class="logo-img"></a>
       <p>Trusted ophthalmic pharmaceutical supplier for eye care professionals. Quality, authenticity, and reliability since 2010. Hyderabad, India.</p>
     </div>
     <div class="footer-links">
@@ -707,6 +599,43 @@
   }
   const co=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){animCounter(e.target);co.unobserve(e.target)}}),{threshold:.5});
   document.querySelectorAll('.counter').forEach(el=>co.observe(el));
+
+  /* PRODUCTS GRID */
+  function titleCase(s){return s.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());}
+  const grid=document.getElementById('productsGrid');
+  fetch('products.json').then(r=>r.json()).then(products=>{
+    function render(filter){
+      const list=products.filter(p=>filter==='All'||p.category===filter);
+      grid.innerHTML=list.map(p=>{
+        const name=titleCase(p.name);
+        const waText=encodeURIComponent(`I would like to enquire about ${name}.`);
+        let desc=p.short_description.slice(0,130);
+        if(p.short_description.length>130)desc=desc.replace(/\s+\S*$/,'')+'…';
+        return `<div class="product-card">
+          <div class="product-img-wrap">
+            <img src="${p.local_images[0]}" alt="${name}" loading="lazy" draggable="false"/>
+            <div class="product-img-overlay"></div>
+          </div>
+          <div class="product-body">
+            <h3>${name}</h3>
+            <span class="tag" style="align-self:flex-start">${p.category}</span>
+            <p>${desc}</p>
+            <a href="https://wa.me/919343087666?text=${waText}" target="_blank" class="card-cta">Enquire on WhatsApp &#8594;</a>
+          </div>
+        </div>`;
+      }).join('') || '<p class="products-empty">No products in this category yet.</p>';
+    }
+    render('All');
+    document.querySelectorAll('.filter-tab').forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        render(tab.dataset.filter);
+      });
+    });
+  }).catch(()=>{
+    grid.innerHTML='<p class="products-empty">Product catalogue is temporarily unavailable. Please <a href="https://wa.me/919343087666" target="_blank" style="color:var(--teal)">WhatsApp us</a> for our full list.</p>';
+  });
 </script>
 </body>
 </html>
